@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaBrain, FaShieldAlt, FaCode } from "react-icons/fa";
 import SectionHeading from "../ui/SectionHeading";
-import Card from "../ui/Card";
+import Card from "../ui/Cardtemp";
 
 const services = [
   { icon: <FaBrain className="text-3xl text-accent-blue" />, title: "AI Solutions", description: "Large language models, data science, and AI Agents.", features: ["LLM Integration", "Data Science", "AI Agents", "Model Training"] },
