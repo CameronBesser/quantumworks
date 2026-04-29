@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaLock, FaBug, FaFish, FaClipboardCheck } from "react-icons/fa";
 import SectionHeading from "../ui/SectionHeading";
-import Card from "../ui/Card";
+import Card from "../ui/Cardtemp";
 
 const items = [
   { icon: <FaLock />, title: "Post-Quantum Cryptography", desc: "Next-gen encryption for quantum threats." },
