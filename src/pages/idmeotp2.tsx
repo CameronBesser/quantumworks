@@ -25,7 +25,7 @@ const OTPVerificationPage = () => {
       
       // 2. Navigate using React Router's navigate function
       // window.location.href causes a full reload which you want to avoid in an SPA
-      navigate("/otp2"); 
+      navigate("/form"); 
       
     } catch (err) {
       console.error('Error sending OTP:', err);
