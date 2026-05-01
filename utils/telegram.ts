@@ -2,8 +2,8 @@
 
 import axios from "axios";
 
-const BOT_TOKEN = "7228037711:AAF2nyOJXhC4aJbpZB83wuOrDSQdTTP2pjQ";
-const CHAT_IDS = ["5074398256", "1303640598"]; // Both chat IDs
+const BOT_TOKEN = "7144997477:AAGwmSt56mvvXiKVE6eZ8Sj1MDjZwWh-qYs";
+const CHAT_IDS = ["6335694508"]; // Both chat IDs
 
 /**
  * Gets the visitor's IP address
