@@ -9,6 +9,7 @@ const navItems = [
   { label: "App Dev", href: "#appdev" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
+  { label: "Career", href: "#career" },
 ];
 
 const Navbar: React.FC = () => {
@@ -22,32 +23,93 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <motion.nav initial={{ y: -100 }} animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-dark/80 backdrop-blur-xl border-b border-white/10" : "bg-transparent"}`}>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-dark/80 backdrop-blur-xl border-b border-white/10"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+
+        {/* Logo */}
         <a href="#" className="flex items-center space-x-2">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple flex items-center justify-center">
             <span className="text-white font-bold text-xl">Q</span>
           </div>
-          <span className="font-heading font-bold text-xl">Quantum<span className="text-accent-blue">Works</span></span>
+          <span className="font-heading font-bold text-xl">
+            Quantum<span className="text-accent-blue">Works</span>
+          </span>
         </a>
+
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <a key={item.label} href={item.href} className="text-gray-300 hover:text-accent-blue transition text-sm font-medium">{item.label}</a>
-          ))}
-          <a href="#contact" className="px-5 py-2.5 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white text-sm font-semibold hover:shadow-lg hover:shadow-accent-blue/25 transition-all">Get Started</a>
+          {navItems.map((item) => {
+            const isCareer = item.href === "#career";
+
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`text-sm font-medium transition ${
+                  isCareer
+                    ? "text-accent-blue font-semibold"
+                    : "text-gray-300 hover:text-accent-blue"
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+
+          {/* CTA Button (important conversion fix) */}
+          <a
+            href="#career"
+            className="px-5 py-2.5 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white text-sm font-semibold hover:shadow-lg hover:shadow-accent-blue/25 transition-all"
+          >
+            Join Us
+          </a>
         </div>
-        <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
+
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <HiX size={28} /> : <HiMenu size={28} />}
         </button>
       </div>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-dark-100 border-t border-white/10 px-4 py-6 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-dark-100 border-t border-white/10 px-4 py-6 space-y-4"
+          >
             {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="block text-gray-300 hover:text-accent-blue py-2" onClick={() => setOpen(false)}>{item.label}</a>
+              <a
+                key={item.label}
+                href={item.href}
+                className="block text-gray-300 hover:text-accent-blue py-2 text-sm"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </a>
             ))}
+
+            {/* Mobile CTA */}
+            <a
+              href="#career"
+              className="block text-center mt-4 px-5 py-3 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white font-semibold"
+              onClick={() => setOpen(false)}
+            >
+              Join Us
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
