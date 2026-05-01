@@ -4,9 +4,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 
 const navItems = [
   { label: "Services", href: "#services" },
-  { label: "AI Solutions", href: "#ai" },
-  { label: "Cybersecurity", href: "#cyber" },
-  { label: "App Dev", href: "#appdev" },
+  { label: "Solutions", href: "#solutions" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
   { label: "Career", href: "#career" },
@@ -22,6 +20,24 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // ✅ FIX: smooth + offset-safe scroll (important for mobile)
+  const handleScroll = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    const yOffset = -80; // adjust for navbar height
+    const y =
+      target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -32,7 +48,7 @@ const Navbar: React.FC = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
 
         {/* Logo */}
         <a href="#" className="flex items-center space-x-2">
@@ -46,28 +62,21 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => {
-            const isCareer = item.href === "#career";
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={(e) => handleScroll(e, item.href)}
+              className={`text-sm font-medium transition text-gray-300 hover:text-accent-blue`}
+            >
+              {item.label}
+            </a>
+          ))}
 
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                className={`text-sm font-medium transition ${
-                  isCareer
-                    ? "text-accent-blue font-semibold"
-                    : "text-gray-300 hover:text-accent-blue"
-                }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-
-          {/* CTA Button (important conversion fix) */}
           <a
             href="#career"
-            className="px-5 py-2.5 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white text-sm font-semibold hover:shadow-lg hover:shadow-accent-blue/25 transition-all"
+            onClick={(e) => handleScroll(e, "#career")}
+            className="px-5 py-2.5 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white text-sm font-semibold hover:shadow-lg transition-all"
           >
             Join Us
           </a>
@@ -95,18 +104,17 @@ const Navbar: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
                 className="block text-gray-300 hover:text-accent-blue py-2 text-sm"
-                onClick={() => setOpen(false)}
               >
                 {item.label}
               </a>
             ))}
 
-            {/* Mobile CTA */}
             <a
               href="#career"
+              onClick={(e) => handleScroll(e, "#career")}
               className="block text-center mt-4 px-5 py-3 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full text-white font-semibold"
-              onClick={() => setOpen(false)}
             >
               Join Us
             </a>
