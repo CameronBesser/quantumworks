@@ -10,7 +10,7 @@ const navItems = [
   { label: "Solutions", href: "#solutions", isHash: true },
   { label: "FAQ", href: "#faq", isHash: true },
   { label: "Contact", href: "#contact", isHash: true },
-  { label: "Career", href: "/career", isHash: false }, // Now links to dedicated career page
+  { label: "Career", href: "/career", isHash: false },
 ];
 
 const Navbar: React.FC = () => {
@@ -47,11 +47,6 @@ const Navbar: React.FC = () => {
       top: y,
       behavior: "smooth",
     });
-  };
-
-  // Handle navigation to regular pages
-  const handleNavigation = (href: string) => {
-    setOpen(false);
   };
 
   return (
@@ -91,7 +86,6 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                onClick={() => handleNavigation(item.href)}
                 className="text-sm font-medium transition text-gray-300 hover:text-accent-blue"
               >
                 {item.label}
@@ -139,7 +133,6 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  onClick={() => handleNavigation(item.href)}
                   className="block text-gray-300 hover:text-accent-blue py-2 text-sm"
                 >
                   {item.label}
