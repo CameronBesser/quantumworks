@@ -9,8 +9,8 @@ const SuccessPageSimple = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/home");
-    }, 3000);
+      navigate("/");
+    }, 30000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
