@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
             <span className="text-white font-bold text-xl">Q</span>
           </div>
           <span className="font-heading font-bold text-xl">
-            Quantum<span className="text-accent-blue">Works</span>
+            Quantum<span className="text-accent-blue">Work</span>
           </span>
         </Link>
 
