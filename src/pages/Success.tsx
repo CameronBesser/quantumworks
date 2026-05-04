@@ -1,4 +1,4 @@
-// src/pages/SuccessPage.tsx
+// src/pages/Success.tsx
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import Card from "../components/ui/Cardtemp";
 
-const SuccessPage: React.FC = () => {
+const Success: React.FC = () => {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(5);
 
@@ -21,6 +21,7 @@ const SuccessPage: React.FC = () => {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(timer);
   }, [navigate]);
 
@@ -110,4 +111,4 @@ const SuccessPage: React.FC = () => {
   );
 };
 
-export default SuccessPage;
+export default Success;

